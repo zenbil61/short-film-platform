@@ -1,0 +1,29 @@
+@import '@/styles/starter.scss';
+
+.s-btn {
+  //width: 100%;
+  cursor: pointer;
+  padding: 7px 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  // margin-bottom: 20px !important;
+  text-align: center;
+  box-sizing: border-box;
+  background: $primary-color;
+  border-radius: 5px;
+  outline: none;
+  border: none; /* Border varsa kaldırmak için */
+
+  &:hover {
+    background: white;
+    color: #333;
+  }
+  &.lg {
+    padding: 10px 18px;
+    font-size: 20px;
+  }
+  &.full {
+    width: 100%;
+  }
+}

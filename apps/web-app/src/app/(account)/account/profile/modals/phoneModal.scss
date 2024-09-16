@@ -1,0 +1,39 @@
+@import '@/styles/starter.scss';
+
+.otp-icon {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  &-wrapper {
+    background: $input-background-color;
+    border: 1px solid $input-border-color;
+    border-radius: 50%;
+    padding: 10px;
+    svg {
+      height: 80px;
+    }
+  }
+}
+
+.phone-modal {
+  .modal-content {
+    max-width: 350px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  &-input {
+    max-width: 290px;
+    margin: 0 auto;
+  }
+  &-description {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #999;
+  }
+  a {
+    line-height: 30px;
+    font-size: 15px;
+  }
+}

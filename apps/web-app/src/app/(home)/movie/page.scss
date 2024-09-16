@@ -1,0 +1,86 @@
+@import '@/styles/starter.scss';
+
+.movie {
+  position: relative;
+  &-header {
+    width: 100%;
+    // background-image: url('banner-image.jpg'); /* Arkaplan resmi */
+    background-size: cover !important; /* Resmi kapsayacak şekilde ölçekler */
+    background-position: center !important; /* Merkezi konumlandırma */
+    background-repeat: no-repeat !important; /* Tekrar etmeyi engeller */
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    color: white; /* İçerik rengi */
+    text-align: center; /* İçeriği ortala */
+    &-detail {
+      z-index: 3;
+      position: absolute;
+      left: 70px;
+      bottom: 50px;
+      width: 40%;
+      text-align: left;
+      p {
+        font-size: 17px;
+        line-height: 30px;
+        margin: 25px 0px;
+      }
+      img {
+        display: block;
+        max-width: 400px;
+        max-height: 200px;
+      }
+      &-badges {
+        margin-top: 20px;
+        color: #999;
+        width: 100%;
+        .item {
+          &.category {
+            color: white;
+            text-decoration: underline;
+          }
+          margin-right: 20px;
+        }
+      }
+      &-actions {
+        margin-top: 35px;
+        display: flex;
+        .action {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          width: 50px;
+          margin-left: 20px;
+          background-color: rgba($color: #555, $alpha: 0.7);
+          backdrop-filter: blur(25px);
+          border-radius: 50%;
+          transition: background-color 0.2s ease-in-out;
+          &:hover {
+            background: $primary-color;
+          }
+
+          svg {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  &-overlay {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, transparent 10%, black);
+  }
+}
+.others {
+    margin-top:50px
+}

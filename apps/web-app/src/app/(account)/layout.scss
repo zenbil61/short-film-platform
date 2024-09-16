@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import '@/styles/variables.scss';
+$background-color: #fafafa;
+:root,
+html {
+  background-color: $background-color;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.sidebar-wrapper {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 250px;
+  width: 100%;
+  margin-top: $header-height + 40px;
+  &-menu {
+    margin-top: 0px;
+    width: 300px;
+    // min-width: 360px;
+    // max-width: 360px;
+  }
+  &-content {
+    flex: 1;
+  }
+}
+
+.sidebar-menu {
+  margin-right: 30px;
+  // margin: 20px;
+  // border-radius: 20px;
+  &-item {
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 17px !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #333;
+    &:hover {
+      background: #e6e6e6;
+    }
+  }
+  &-profile {
+    display: flex;
+    padding-left: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    &:hover {
+      // border: 1px solid #e6e6e6;
+      background: #e6e6e6;
+      border-radius: 10px;
+    }
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+    &-info {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding-left: 10px;
+      padding-top: 3px;
+      gap: 3px;
+      p {
+        font-weight: bold;
+        color: #333;
+        margin: 0px;
+        &.username {
+          font-weight: normal;
+          color: #999!important;
+        }
+      }
+    }
+  }
+}
+
+.page {
+  &-title {
+    margin-top: -5px;
+    margin-bottom: 0px!important;
+  }
+  &-description {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #666;
+  }
+  &-content {
+    border-radius: 10px;
+    // margin-top: 40px;
+    border: 1px solid #cccccc;
+    padding: 15px 15px;
+    // width: 100% !important;
+    background: white;
+    &.form-content {
+      padding: 30px 30px;
+    }
+  }
+}

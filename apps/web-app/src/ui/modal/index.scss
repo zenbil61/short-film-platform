@@ -1,0 +1,58 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  &-header {
+    &-title {
+      margin-top: 0px;
+    }
+  }
+  &-content {
+    min-height: 100px;
+  }
+  &-footer {
+    justify-content: flex-end;
+    display: flex;
+    gap: 7px;
+  }
+  //transform: translateY(-50px); /* Başlangıçta yukarıda */
+  opacity: 0;
+  animation: modalFadeIn 0.2s forwards; /* Animasyonu tanımlıyoruz */
+}
+@keyframes modalFadeIn {
+  to {
+    opacity: 1; /* Opaklık 1 olacak */
+    // transform: translateY(0); /* Normal pozisyonuna gelecek */
+  }
+}
+.modal-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}

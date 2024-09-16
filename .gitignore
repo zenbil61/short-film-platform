@@ -1,0 +1,30 @@
+node_modules/
+**/node_modules/
+
+**/dist/
+
+
+# Expo
+**/.expo/
+**/.expo-shared/
+**/web-build/
+# Android
+**/android/app/build/
+**/android/.gradle/
+**/android/.idea/
+**/android/local.properties
+**/android/.settings/
+**/android/*.iml
+**/android/app/src/main/assets/shell-app.bundle
+**/android/app/src/main/assets/shell-app.manifest
+
+# iOS
+**/ios/Pods/
+**/ios/build/
+**/ios/ExpoKitApp.xcworkspace/
+**/ios/*.xcworkspace
+**/ios/*.xcuserdata
+#metro
+**/*.metro.*
+
+

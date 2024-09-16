@@ -1,0 +1,225 @@
+// daha sonra fontları indir
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import '@/styles/variables.scss';
+html {
+  font-size: 14px;
+}
+h1 {
+  font-size: $h1-font-size;
+}
+h2 {
+  font-size: $h2-font-size;
+}
+h3 {
+  font-size: $h3-font-size;
+}
+h4 {
+  font-size: $h4-font-size;
+}
+br {
+  background: none;
+}
+a {
+  cursor: pointer;
+}
+.svg-icon {
+  height: 30px;
+  width: 30px;
+}
+.app-logo {
+  font-size: 25px;
+  //width: 150px;
+  color: #84bdff;
+  font-weight: bold;
+  &.x2 {
+    font-size: 40px;
+  }
+  &.x3 {
+    font-size: 60px;
+  }
+  &.x4 {
+    font-size: 80px;
+  }
+  &.x5 {
+    font-size: 100px;
+  }
+}
+main {
+  // margin-top: calc($header-height + 10px);
+}
+
+.pl-1 {
+  padding-left: 3px;
+}
+.pl-2 {
+  padding-left: 6px;
+}
+.pl-3 {
+  padding-left: 9px;
+}
+.pl-4 {
+  padding-left: 12px;
+}
+.pl-5 {
+  padding-left: 15px;
+}
+
+.pt-1 {
+  padding-top: 3px;
+}
+.pt-2 {
+  padding-top: 6px;
+}
+.pt-3 {
+  padding-top: 9px;
+}
+.pt-4 {
+  padding-top: 12px;
+}
+.pt-5 {
+  padding-top: 15px;
+}
+
+.pr-1 {
+  padding-right: 3px;
+}
+.pr-2 {
+  padding-right: 6px;
+}
+.pr-3 {
+  padding-right: 9px;
+}
+.pr-4 {
+  padding-right: 12px;
+}
+.pr-5 {
+  padding-right: 15px;
+}
+
+.pb-1 {
+  padding-bottom: 3px;
+}
+.pb-2 {
+  padding-bottom: 6px;
+}
+.pb-3 {
+  padding-bottom: 9px;
+}
+.pb-4 {
+  padding-bottom: 12px;
+}
+.pb-5 {
+  padding-bottom: 15px;
+}
+
+.ml-1 {
+  margin-left: 3px;
+}
+.ml-2 {
+  margin-left: 6px;
+}
+.ml-3 {
+  margin-left: 9px;
+}
+.ml-4 {
+  margin-left: 12px;
+}
+.ml-5 {
+  margin-left: 15px;
+}
+
+.mt-1 {
+  margin-top: 3px;
+}
+.mt-2 {
+  margin-top: 6px;
+}
+.mt-3 {
+  margin-top: 9px;
+}
+.mt-4 {
+  margin-top: 12px;
+}
+.mt-5 {
+  margin-top: 15px;
+}
+
+.mr-1 {
+  margin-right: 3px;
+}
+.mr-2 {
+  margin-right: 6px;
+}
+.mr-3 {
+  margin-right: 9px;
+}
+.mr-4 {
+  margin-right: 12px;
+}
+.mr-5 {
+  margin-right: 15px;
+}
+
+.mb-1 {
+  margin-bottom: 3px;
+}
+.mb-2 {
+  margin-bottom: 6px;
+}
+.mb-3 {
+  margin-bottom: 9px;
+}
+.mb-4 {
+  margin-bottom: 12px;
+}
+.mb-5 {
+  margin-bottom: 15px;
+}
+
+.d-flex {
+  display: flex;
+  &.space-beetwen {
+    justify-content: space-between;
+  }
+}
+a {
+  text-decoration: none;
+}
+.loader {
+  width: 38px;
+  height: 38px;
+  border: 5px solid #444;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  &.light {
+    color: white;
+  }
+
+  &.small {
+    width: 28px;
+    height: 28px;
+  }
+  &.big {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+a {
+  color: $primary-color;
+}

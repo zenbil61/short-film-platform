@@ -1,0 +1,17 @@
+@import '@/styles/variables.scss';
+
+.container {
+  display: flex;
+  overflow: hidden;
+  max-width: 1350px;
+  width: 75%;
+  // width: auto;
+  margin: 0 auto;  // Ortalamak için
+  padding: 0 20px; // Opsiyonel: Yana yaslanmasın diye
+}
+
+.fullContainer {
+  overflow-x: hidden;
+  margin: 0 auto;  // Ortalamak için
+  padding: 0px 10px;
+}

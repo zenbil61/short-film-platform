@@ -1,0 +1,100 @@
+@import '@/styles/variables.scss';
+
+.file-detail {
+  // margin-top: 10px;
+  color: #a4a4a4;
+  font-weight: 500;
+  font-size: 14px;
+  &-name {
+    // max-width: 40%;
+    // display: inline-block;
+    margin-right: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+  }
+  //margin-top: 25px;
+  // margin-bottom: -8px;
+}
+.stepper-wrapper {
+  margin-bottom: 30px;
+}
+.ayrac {
+  height: 2px;
+  width: 100%;
+  background: #f1f1f1;
+  margin: 5px 0px 25px 0px;
+}
+
+.image-upload {
+  display: flex;
+  &-area {
+    display: inline-block;
+    position: relative;
+    height: 120px;
+    width: 200px;
+    img {
+      height: 120px;
+      width: 200px;
+      border-radius: 10px;
+    }
+  }
+  &-remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: $red;
+    color: white;
+    .icon-close {
+      height: 10px;
+      fill: white;
+    }
+  }
+  &-info {
+    gap: 10px;
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    font-size: 14px;
+    color: #999;
+
+    p {
+      width: 100%;
+      margin: 0px;
+    }
+  }
+}
+
+.form-footer {
+  padding-top: 15px;
+  border-top: 1px solid $input-border-color;
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#video-upload {
+  border-width: 3px;
+  .s-upload-area-icon {
+    svg {
+      opacity: 0.3;
+      height: 120px;
+    }
+  }
+  .s-upload-area-text {
+    font-size: 20px;
+    opacity: 0.6;
+    a {
+      font-size: 20px !important;
+    }
+  }
+}

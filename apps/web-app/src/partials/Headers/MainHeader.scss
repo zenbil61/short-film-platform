@@ -1,0 +1,9 @@
+@import '@/styles/variables.scss';
+.header {
+  &.scroll {
+    // background-color: rgba(37, 43, 50, 0.9);
+    background-color: rgba(33, 33, 33, 0.75);
+    backdrop-filter: blur(32px);
+  }
+  transition: background-color 0.4s ease; /* Arkaplan rengi için geçiş */
+}

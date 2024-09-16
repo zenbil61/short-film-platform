@@ -1,0 +1,18 @@
+.detail {
+  &-content {
+  }
+  &-sidebar {
+  }
+}
+.video-detail {
+  margin-top: 10px;
+  &-item {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #777;
+    span {
+      color: #333;
+      font-weight: bold;
+    }
+  }
+}

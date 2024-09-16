@@ -1,0 +1,25 @@
+.result {
+  max-width: 350px;
+  margin: 0 auto;
+
+  &-icon {
+    text-align: center;
+    svg {
+      height: 80px;
+    }
+  }
+
+  &-description {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 18px;
+    h3 {
+      margin-bottom: 0px;
+    }
+    p {
+      margin-top: 5px;
+      color: #999;
+    }
+  }
+}

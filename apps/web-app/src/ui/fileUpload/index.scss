@@ -1,0 +1,64 @@
+@import '@/styles/starter.scss';
+
+.s-upload-area {
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  background: $input-background-color;
+  border: 2px dashed $input-border-color;
+  border-radius: 8px;
+  font-size: 12px !important;
+
+  &-icon {
+    margin-bottom: 5px;
+    overflow: hidden;
+    svg {
+      //  stroke: red;
+      //  fill: red;
+      //  color: red;;
+      height: 25px;
+    }
+  }
+  &-text {
+    // margin-top: 10px;
+    a {
+      padding-left: 5px;
+      font-weight: bold;
+      font-size: 12px !important;
+      color: $primary-color !important;
+    }
+  }
+  &-info {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 11px !important;
+    color: red;
+    &.error {
+      color: red;
+    }
+  }
+  &.active {
+    border: 2px dashed $primary-color !important;
+    * {
+      pointer-events: none;
+    }
+  }
+
+  // TODO: COMMENTE ALDIM AMA NE İŞE YARIYOR ÇÖZEMEDİM
+  // &:first-child::before {
+  //   display: inline-block;
+  //   // height: 1px solid #e6e6e6;
+  //   height: 200px;
+  //   width: 1px;
+  //   background: #eeeeee;
+  //   position: absolute;
+  //   left: 0px;
+  //   top: 0px;
+  //   content: '';
+  // }
+}

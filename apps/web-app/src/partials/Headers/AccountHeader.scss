@@ -1,0 +1,17 @@
+#account-header {
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  .app-logo {
+    color: #1883ff !important;
+  }
+  .header-menu {
+    margin-top: 5px;
+    .header-link {
+      color: #333;
+      font-weight: 600;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

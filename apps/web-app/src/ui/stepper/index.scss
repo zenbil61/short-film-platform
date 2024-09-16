@@ -1,0 +1,135 @@
+@import '@/styles/starter.scss';
+
+$counterHeight: 50px;
+$tick-border-width: 4px;
+
+.tick {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 8px;
+  margin-top: -4px;
+  border-bottom: $tick-border-width solid white;
+  border-right: $tick-border-width solid white;
+}
+@mixin tick-icon {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 3px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid white;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transform: rotate(-45deg);
+}
+
+.stepper-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  // margin-bottom: 20px;
+}
+.stepper-item {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  color: #c2c2c2;
+  &.active {
+    font-weight: bold;
+    color: #333;
+    .step-counter {
+      color: white;
+      background: $primary-color;
+      border: 2px solid $primary-color;
+    }
+    &::before,
+    &::after {
+      border-color: $primary-color;
+    }
+  }
+  &.completed {
+    color: #333;
+    .step-counter {
+      color: $primary-color;
+      background-color: #008c76;
+      border-color: #008c76;
+      color: white;
+      &::after {
+        @include tick-icon();
+      }
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      border-bottom: 2px solid #008c76;
+      width: 100%;
+      top: $counterHeight/ 2;
+      left: 50%;
+      z-index: 3;
+    }
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    border-bottom: 2px solid #cccccc;
+    width: 100%;
+    top: $counterHeight / 2;
+    left: -50%;
+    z-index: 2;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    border-bottom: 2px solid #cccccc;
+    width: 100%;
+    top: $counterHeight / 2;
+    left: 50%;
+    z-index: 2;
+  }
+  &:first-child::before {
+    content: none;
+  }
+  &:last-child::after {
+    content: none;
+  }
+  .step-counter {
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 22px;
+    color: #c2c2c2;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $counterHeight;
+    height: $counterHeight;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #cccccc;
+    margin-bottom: 6px;
+  }
+  .step-name {
+    margin-top: 5px;
+  }
+  // @include media-breakpoint-down(md) {
+  //   &:not(.active) {
+  //     .step-name {
+  //       display: none;
+  //     }
+  //   }
+  //   &.active {
+  //     .step-name {
+  //       font-size: 14px;
+  //     }
+  //   }
+  // }
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}

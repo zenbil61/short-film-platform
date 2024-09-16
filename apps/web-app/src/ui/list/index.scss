@@ -1,0 +1,56 @@
+@mixin item {
+  position: relative;
+  cursor: pointer;
+  padding: 20px;
+  border-bottom: 1px solid #e6e6e6;
+  &-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    // span {
+    //   font-size: 13px;
+    //   margin-left: 5px;
+    //   font-weight: normal;
+    //   color: #999;
+    // }
+  }
+  &-description {
+    margin-top: 7px;
+    color: #999;
+  }
+  &:hover {
+    background: #fafafa;
+    border-radius: 10px;
+  }
+  &:after {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 12px);
+    opacity: 0.2;
+    font-size: 20px;
+    content: '>';
+  }
+}
+
+.s-list {
+  &-item {
+    @include item;
+    &:last-child {
+      border-bottom: 0px;
+    }
+  }
+  &-image-item {
+    @include item;
+    display: flex;
+    &-content {
+      flex-direction: column;
+      padding-left: 20px;
+      padding-top: 15px;
+    }
+    img {
+      border-radius: 6px;
+      height: 90px;
+      width: 160px;
+    }
+  }
+}

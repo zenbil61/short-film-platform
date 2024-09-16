@@ -1,0 +1,29 @@
+{
+  "name": "short-film-workspace",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:mobile": "cd apps/mobile-app && yarn ios",
+    "dev:tv": "cd apps/tv-app && yarn ios",
+    "dev:web": "cd apps/web-app && yarn dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
+    "nohoist": [
+      "**/react",
+      "**/react/**",
+      "**/react-dom",
+      "**/react-native",
+      "**/expo",
+      "**/expo/**"
+    ]
+  }
+}

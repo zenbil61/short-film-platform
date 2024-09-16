@@ -1,0 +1,71 @@
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 90%, black);
+}
+
+.banner-slider {
+  &-item {
+    width: 100%;
+    // background-image: url('banner-image.jpg'); /* Arkaplan resmi */
+    background-size: cover !important; /* Resmi kapsayacak şekilde ölçekler */
+    background-position: center !important; /* Merkezi konumlandırma */
+    background-repeat: no-repeat !important; /* Tekrar etmeyi engeller */
+    height: 650px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    color: white; /* İçerik rengi */
+    text-align: center; /* İçeriği ortala */
+    font-size: 2rem;
+    &-details {
+      position: absolute;
+      left: 70px;
+      top: 40%;
+      text-align: left;
+      p {
+        font-size: 17px;
+        max-width: 500px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+      img {
+        display: block;
+        max-width: 400px;
+        max-height: 200px;
+      }
+    }
+  }
+  &-button {
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    // background: green;
+    position: absolute;
+    top: 50%;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    opacity: 0.7;
+    font-size: 25px;
+    transition: font-size 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+      font-size: 30px;
+      opacity: 1;
+    }
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+    }
+  }
+}

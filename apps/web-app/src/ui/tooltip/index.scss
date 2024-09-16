@@ -1,0 +1,49 @@
+@import '@/styles/starter.scss';
+
+$tooltip-color: #333;
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-box {
+  margin-bottom: 10px;
+  margin-left: 3px;
+  position: absolute;
+  bottom: 120%; /* Tooltip'in konumu */
+  left: 50%;
+  transform: translateX(-50%);
+  // background-color: #6c63ff; /* Tooltip arka plan rengi */
+  background-color: $tooltip-color; /* Tooltip arka plan rengi */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.tooltip-box::before {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Tooltip'in altındaki üçgen */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: $tooltip-color transparent transparent transparent;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid $tooltip-color;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}

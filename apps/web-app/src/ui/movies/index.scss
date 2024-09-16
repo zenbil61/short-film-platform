@@ -1,0 +1,83 @@
+@import '@/styles/starter.scss';
+
+$border-radius: 5px;
+
+.movies {
+  // margin: 0px $customSlideButton - 10px;
+
+  &-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: lato;
+    margin-bottom: 10px;
+    a {
+      // font-size: 17px;
+      color: #9dc7f7;
+      margin-left: 20px;
+      font-weight: 400;
+      &:after {
+        margin-left: 5px;
+        content: '>';
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &-list {
+    img {
+      cursor: pointer;
+      box-sizing: content-box;
+      border-radius: $border-radius;
+    }
+    &-item {
+      // padding: 4px;
+      z-index: 99;
+      //z-index: 1 !important; /* Default z-index */
+      transition: transform 0.2s ease, margin-top 0.2s ease; /* Büyütme ve filtre animasyonları */
+      // @include apply-transform-origin;
+      &:hover {
+        @include desktop {
+          z-index: 995 !important; /* Default z-index */
+          transition: transform 0.5s ease, margin-top 0.5s ease; /* Büyütme ve filtre animasyonları */
+          margin-top: -10px;
+          transform: scale(1.2);
+          // transition-delay: 0.5s;
+
+          img {
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          }
+        }
+        .movies-list-item-details {
+          @include desktop {
+            display: block;
+          }
+        }
+      }
+      &-details {
+        // z-index: 9999100000;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        background-color: #000;
+        display: none;
+        padding: 20px;
+        // max-width: 248px;
+        left: 0;
+        right: 0;
+        margin-top: -5px;
+        box-sizing: border-box;
+        // background: red;
+        h2 {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        p {
+          font-size: 13px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
