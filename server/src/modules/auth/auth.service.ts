@@ -1,27 +1,27 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { ApiResponse } from 'src/common/apiResponse';
+import { LoginResponseDto } from './dtos/loginResponseDto';
+import UserRepository from 'src/db/repositories/userRepository';
+import { IUser } from 'src/db/model/IUser';
 
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService) {}
+  constructor(private jwtService: JwtService, private userRepository: UserRepository) { }
 
-  async signIn(
-    email: string,
-    password: string,
-  ): Promise<{ access_token: string }> {
-    const dbUser = {
-      userId: 61,
-      email: 'mustafa@zenbil.com',
-      password: '616161',
-    };
-    if (dbUser.email !== email || dbUser.password !== password) {
+  async signIn(email: string, password: string): Promise<ApiResponse<LoginResponseDto>> {
+    const user: IUser = await this.userRepository.login(email, password);
+    if (!user) {
       throw new UnauthorizedException();
     }
+    const payload = { userId: user.UserId, email: user.Email };
+    const token: String = await this.jwtService.signAsync(payload);
 
-    const payload = { sub: dbUser.userId, email: dbUser.email };
-    const token = await this.jwtService.signAsync(payload);
-    return {
-      access_token: token,
-    };
+    const response = new ApiResponse<LoginResponseDto>();
+    response.data = {
+      accessToken: token,
+      expireDate: new Date()
+    }
+    return response.Success();
   }
 }

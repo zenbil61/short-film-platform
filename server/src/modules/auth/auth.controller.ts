@@ -8,17 +8,20 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from 'src/common/AuthGuard';
 import { AuthService } from './auth.service';
 import { LoginRequestDTO } from './dtos/loginRequestDTO'
+import { ApiResponse } from 'src/common/apiResponse';
+import { LoginResponseDto } from './dtos/loginResponseDto';
+
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  login(@Body() request: LoginRequestDTO) {
-    return this.authService.signIn(request.email, request.password);
+  async login(@Body() request: LoginRequestDTO): Promise<ApiResponse<LoginResponseDto>> {
+    return await this.authService.signIn(request.email, request.password);
   }
 
   @UseGuards(AuthGuard)
