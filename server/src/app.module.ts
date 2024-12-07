@@ -23,7 +23,7 @@ import { OtpModule } from './modules/otp/otp.module';
       },
       loader: I18nJsonLoader, // JSON formatındaki çevirileri yüklemek için
       resolvers: [
-        new AcceptLanguageResolver(),
+        new AcceptLanguageResolver(), // Accept-Language 
       ],
     }),
   ],

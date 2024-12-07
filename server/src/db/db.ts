@@ -1,5 +1,5 @@
 import knex from 'knex';
-import config from './KnexFile';
+import config from './knexFile';
 
 // Development ortamı için yapılandırmayı seçin
 const environment = process.env.NODE_ENV || 'development';
