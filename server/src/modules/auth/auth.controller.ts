@@ -23,10 +23,4 @@ export class AuthController {
   async login(@Body() request: LoginRequestDTO): Promise<ApiResponse<LoginResponseDto>> {
     return await this.authService.signIn(request.email, request.password);
   }
-
-  @UseGuards(AuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
-  }
 }

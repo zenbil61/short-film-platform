@@ -1,6 +1,6 @@
 
 export interface IContentCategory {
-  ContentCategoryId: Number;
+  ContentCategoryId?: Number;
   ContentId: Number;
   CategoryId: Number;
 }

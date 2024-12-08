@@ -15,7 +15,6 @@ export class UserService {
     const response = new ApiResponse<userDetailInfo>();
     const user: IUser = await this.userRepository.findById(id);
 
-
     response.data = {
       fullName: user.FullName,
       userName: user.UserName,

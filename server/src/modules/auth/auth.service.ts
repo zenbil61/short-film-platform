@@ -7,7 +7,10 @@ import { IUser } from 'src/db/model/IUser';
 
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService, private userRepository: UserRepository) { }
+  constructor(
+    private jwtService: JwtService,
+    private userRepository: UserRepository
+  ) { }
 
   async signIn(email: string, password: string): Promise<ApiResponse<LoginResponseDto>> {
     const user: IUser = await this.userRepository.login(email, password);

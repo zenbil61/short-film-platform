@@ -1,9 +1,6 @@
 import { Body, Controller, Get, Param, Request, Post, Put, UseGuards, SetMetadata } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ApiResponse } from 'src/common/apiResponse';
-import { UserDTO } from './dtos/userDto';
-import db from 'src/db/db';
-import { IUser } from 'src/db/model/IUser';
 import { createUserDto } from './dtos/createUserDto';
 import { updateUserInfoDto } from './dtos/updateUserInfoDto';
 import { userDetailInfo } from './dtos/userDetailInfo';

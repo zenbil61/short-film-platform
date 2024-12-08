@@ -12,16 +12,15 @@ export class BaseRepository<T> {
         this.primaryIdKey = primaryIdKey;
         this.db = db;
     }
-
-    async findAll(): Promise<T[]> {
-        return this.db(this.tableName).select('*');
-    }
-
     async findById(id: Number): Promise<T | undefined> {
         return this.db(this.tableName).where(this.primaryIdKey, id).first();
     }
 
     async create(data: Partial<T>): Promise<T> {
+        const [createdRecord] = await this.db(this.tableName).insert(data).returning('*');
+        return createdRecord;
+    }
+    async createArray(data: Array<Partial<T>>): Promise<T> {
         const [createdRecord] = await this.db(this.tableName).insert(data).returning('*');
         return createdRecord;
     }
