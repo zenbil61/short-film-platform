@@ -2,13 +2,14 @@ import {
     CanActivate,
     ExecutionContext,
     Injectable,
-    UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { JWT_SECRET } from './constant';
 import { Request } from 'express';
-
+import { LimitException } from 'src/exceptions/LimitException';
+import { UnauthorizeException } from 'src/exceptions';
+import { IUserAuthorized } from './IUserAuthorized';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -22,19 +23,20 @@ export class AuthGuard implements CanActivate {
         }
 
         const request = context.switchToHttp().getRequest();
-        request['user'] = { userId: 10 };
+        request['user'] = { userId: 11 } as IUserAuthorized;
+
         return true; // TODO sürekli test ortamında token almamak için koydum
 
         const token = this.extractTokenFromHeader(request);
         if (!token) {
-            throw new UnauthorizedException();
+            throw new UnauthorizeException('Kimlik Doğrulamanız Yapılamadı');
         }
         try {
             // tokeni doğruluyor ve içinden bilgileri çekiyor
             const payload = await this.jwtService.verifyAsync(token, { secret: JWT_SECRET });
             request['user'] = payload;
         } catch {
-            throw new UnauthorizedException();
+            throw new UnauthorizeException('Kimlik Doğrulamanız Yapılamadı');
         }
         return true;
     }

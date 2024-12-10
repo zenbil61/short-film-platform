@@ -6,7 +6,9 @@ import { ContentDto } from './dtos/contentDto';
 import { CreateContentDto } from './dtos/createContentDto';
 import { AuthGuard } from 'src/common/AuthGuard';
 import { UpdateContentDto } from './dtos/updateContentDto';
-import { plainToInstance } from 'class-transformer';
+import { ValidationException } from 'src/exceptions';
+import { User } from 'src/decorators/user';
+import { IUserAuthorized } from 'src/common/IUserAuthorized';
 
 
 @UseGuards(AuthGuard)
@@ -17,28 +19,28 @@ export class ContentController {
   ) { }
 
   @Post('')
-  async createContent(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req?.user?.userId;
-    const request: CreateContentDto = req.body;
-    return await this.service.createContent(userId, request);
+  async createContent(
+    @Body() request: CreateContentDto,
+    @User() user: IUserAuthorized
+  ): Promise<ApiResponse<Boolean>> {
+    return await this.service.createContent(user.userId, request);
   }
-  // @Put('')
-  // async updateContent(@Request() req): Promise<ApiResponse<Boolean>> {
-  //   const userId: Number = req?.user?.userId;
-  //   const request: UpdateContentDto = plainToInstance(UpdateContentDto, req.body);
-  //   return await this.service.updateContent(userId, request);
-  // }
+
   @Put('')
-  async updateContent(@Body() req: UpdateContentDto): Promise<ApiResponse<Boolean>> {
-    // const userId: Number = req?.user?.userId;
-    // const request: UpdateContentDto = plainToInstance(UpdateContentDto, req.body);
-    return await this.service.updateContent(10, req);
+  async updateContent(
+    @Body() request: UpdateContentDto,
+    @User() user: IUserAuthorized
+  ): Promise<ApiResponse<Boolean>> {
+    return await this.service.updateContent(user.userId, request);
   }
+
   @Delete('')
-  async deleteContent(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req?.user?.userId;
-    const contentId: Number = req.body.contentId;
-    return await this.service.deleteContent(userId, contentId);
+  async deleteContent(
+    @Body() request,
+    @User() user: IUserAuthorized
+  ): Promise<ApiResponse<Boolean>> {
+    const contentId: number = request.contentId;
+    return await this.service.deleteContent(user.userId, contentId);
   }
 
   @Get('types')
@@ -47,9 +49,15 @@ export class ContentController {
   }
 
   @Get('list')
-  async getUserContents(@Request() req): Promise<ApiResponse<ContentDto[]>> {
-    const userId: Number = req?.user?.userId;
-    return await this.service.getUserContents(userId);
+  async getUserContents(@User() user: IUserAuthorized): Promise<ApiResponse<ContentDto[]>> {
+    return await this.service.getUserContents(user.userId);
+  }
+
+  @Get('test')
+  async testAuthorized(): Promise<number> {
+    throw new ValidationException('', 'cukkafa');
+    // const abc = await this.service.getUserContentCount(10);
+    return 10;
   }
 
 }

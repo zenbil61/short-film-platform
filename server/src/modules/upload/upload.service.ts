@@ -1,10 +1,10 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
+import { ConflictException, CustomException } from 'src/exceptions';
 
 @Injectable()
 export class UploadService {
   private readonly s3: AWS.S3;
-  // private readonly bucketName: String = 'short-film-content';
 
   constructor() {
     this.s3 = new AWS.S3({
@@ -15,6 +15,7 @@ export class UploadService {
       s3ForcePathStyle: true, // Path-style URL'leri zorunlu kılar
     });
   }
+
   async upload(folder, file): Promise<any> {
     try {
       const params = {
@@ -25,35 +26,62 @@ export class UploadService {
       };
       const isfileExists = await this.isExistFile(params.Key, params.Bucket);
       if (isfileExists) {
-        throw new HttpException(
+        throw new ConflictException(
           'Dosya zaten mevcut. Üzerine yazma işlemi yapılmadı.',
-          HttpStatus.CONFLICT,
         );
       }
       const result = await this.s3.upload(params).promise();
       return result; // Yüklenen dosyanın URL'sini içerir
     } catch (error) {
-      console.error('R2 Upload Error:', error);
-      throw new HttpException('Dosya yüklenemedi.', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new CustomException('Dosya yüklenemedi.');
     }
   }
-  async delete(path: string): Promise<any> {
+
+  async uploadBase64(folder: string, base64Data: string, filename: string, mimetype: string): Promise<any> {
     try {
-      console.log('path', path)
+      // Base64 verisinden "data:image/png;base64," kısmını çıkar
+      const base64Content = base64Data.replace(/^data:\w+\/\w+;base64,/, '');
+
+      // Base64 string'i Buffer'a dönüştür
+      const buffer = Buffer.from(base64Content, 'base64');
+
       const params = {
         Bucket: 'short-film-content',
-        Key: path, // Dosya adı
+        Key: `${folder}/${filename}`, // Dosya adı
+        Body: buffer, // Dosya içeriği
+        ContentType: mimetype, // İçerik türü
+      };
+
+      // Dosyanın var olup olmadığını kontrol et
+      const isFileExists = await this.isExistFile(params.Key, params.Bucket);
+      if (isFileExists) {
+        throw new ConflictException(
+          'Dosya zaten mevcut. Üzerine yazma işlemi yapılmadı.',
+        );
+      }
+
+      // Dosyayı r2'ye yükle
+      const result = await this.s3.upload(params).promise();
+      return result; // Yüklenen dosyanın URL'sini içerir
+    } catch (error) {
+      throw new CustomException('Base64 dosyası yüklenemedi.');
+    }
+  }
+
+
+  async delete(key: string): Promise<any> {
+    try {
+      const params = {
+        Bucket: 'short-film-content',
+        Key: key, // Dosya adı
       };
 
       const result = await this.s3.deleteObject(params).promise();
-      console.log('result', result)
       return result; // Yüklenen dosyanın URL'sini içerir
     } catch (error) {
-      console.error('R2 Upload Error:', error);
-      throw new HttpException('Dosya yüklenemedi.', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new CustomException('Dosya yüklenemedi.');
     }
   }
-
 
   async isExistFile(key: string, bucketName: string): Promise<boolean> {
     try {

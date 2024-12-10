@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ValidationPipe, BadRequestException } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { I18nService } from 'nestjs-i18n';
+import { ValidationException } from 'src/exceptions';
 
 @Injectable()
 export class CustomValidationPipe extends ValidationPipe {
@@ -11,18 +12,18 @@ export class CustomValidationPipe extends ValidationPipe {
             transform: false, // tip dönüşümğü ?
             exceptionFactory: (errors) => {
                 // Hata mesajlarını özelleştirme
-                console.log('errors', errors)
+                // console.log('errors', errors)
 
                 const formattedErrors = errors.map((error) => {
                     const constraints = error.constraints;
 
+                    if (error.constraints?.isNotEmpty) {
+                        return `${error.property}: Boş geçilemez`;
+                    }
                     // Hata mesajlarını özelleştirme ve property ismi ekleme
                     const messages = [];
                     if (error.constraints?.isString) {
                         messages.push(`${error.property}: String olmalı`);
-                    }
-                    if (error.constraints?.isNotEmpty) {
-                        messages.push(`${error.property}: Boş geçilemez`);
                     }
                     if (error.constraints?.isNumber) {
                         messages.push(`${error.property}: Sayı olmalı`);
@@ -34,7 +35,7 @@ export class CustomValidationPipe extends ValidationPipe {
                     return messages.length > 0 ? messages : Object.values(constraints);
                 });
 
-                return new BadRequestException(formattedErrors);
+                return new ValidationException(formattedErrors);
             },
         });
     }

@@ -8,7 +8,7 @@ class ContentCategoryRepository extends BaseRepository<IContentCategory> {
     constructor() {
         super('ContentCategory', 'ContentCategoryId', db);
     }
-    async deleteByContent(contentId: Number): Promise<Boolean[]> {
+    async deleteByContent(contentId: number): Promise<Boolean[]> {
         return await this.db(this.tableName).where('ContentId', contentId).del();
     }
 

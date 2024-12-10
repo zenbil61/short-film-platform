@@ -9,8 +9,12 @@ class ContentRepository extends BaseRepository<IContent> {
     constructor () {
         super('Content', 'ContentId', db);
     }
-    async getUserContents(UserId: Number): Promise<IContent[]> {
+    async getUserContents(UserId: number): Promise<IContent[]> {
         return await this.db(this.tableName).where('UserId', UserId).select('*');
+    }
+    async getUserContentCount(UserId: number): Promise<number> {
+        const [{ count }] = await this.db(this.tableName).where('UserId', UserId).count();
+        return Number(count);
     }
 }
 

@@ -1,17 +1,19 @@
 
 export interface IContent {
-  ContentId?: Number;
-  UserId: Number;
-  ContentType: Number;
-  Name: String;
-  Description: String;
-  ReleaseYear: Number;
-  TargetAge: Number;
-  SmallImage: String;// küçük resim
-  IsPrivate: Boolean;
-  CoverImage: String // kapak resmi
+  ContentId?: number;
+  UserId: number;
+  ContentType: number;
+  Name: string;
+  Description: string;
+  ReleaseYear: number;
+  TargetAge: number;
+  SmallImage: string;// küçük resim
+  IsPrivate: boolean;
+  CoverImage: string // kapak resmi
   CreatedDate: Date;
   DeletedDate?: Date;
-  IsDelete?: Boolean;
-  IsActive?: Boolean;
+  IsDelete?: boolean;
+  IsActive?: boolean;
+  ProcessedPath?: string;
+  RawPath?: string;
 }

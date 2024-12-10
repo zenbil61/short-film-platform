@@ -11,8 +11,9 @@ import { userDetailInfo } from './dtos/userDetailInfo';
 export class UserService {
   constructor(private readonly userRepository: UserRepository) { }
 
-  async getUserInfo(id: Number): Promise<ApiResponse<userDetailInfo>> {
+  async getUserInfo(id: number): Promise<ApiResponse<userDetailInfo>> {
     const response = new ApiResponse<userDetailInfo>();
+
     const user: IUser = await this.userRepository.findById(id);
 
     response.data = {
@@ -26,8 +27,8 @@ export class UserService {
 
     return response.Success();
   }
-  async createUser(data: createUserDto): Promise<ApiResponse<Number>> {
-    const response = new ApiResponse<Number>();
+  async createUser(data: createUserDto): Promise<ApiResponse<number>> {
+    const response = new ApiResponse<number>();
     const newUser: IUser = {
       FullName: data.fullName,
       UserName: data.userName,
@@ -42,12 +43,13 @@ export class UserService {
       Description: ""
     }
 
+
     const createdUser: IUser = await this.userRepository.create(newUser);
     response.data = createdUser.UserId;
 
     return response.Success();
   }
-  async updateInformation(userId:Number, data: updateUserInfoDto): Promise<ApiResponse<Boolean>> {
+  async updateInformation(userId: number, data: updateUserInfoDto): Promise<ApiResponse<Boolean>> {
     const response = new ApiResponse<Boolean>();
     await this.userRepository.update(userId, {
       Description: data.description,
@@ -57,21 +59,21 @@ export class UserService {
     });
     return response.Success();
   }
-  async updatePhoneNumber(userId:Number, data: Number): Promise<ApiResponse<Boolean>> {
+  async updatePhoneNumber(userId: number, data: number): Promise<ApiResponse<Boolean>> {
     const response = new ApiResponse<Boolean>();
     await this.userRepository.update(userId, {
       PhoneNumber: data,
     });
     return response.Success();
   }
-  async updateEmail(userId:Number, data: String): Promise<ApiResponse<Boolean>> {
+  async updateEmail(userId: number, data: string): Promise<ApiResponse<Boolean>> {
     const response = new ApiResponse<Boolean>();
     await this.userRepository.update(userId, {
       Email: data,
     });
     return response.Success();
   }
-  async updatePassword(userId:Number, data: String): Promise<ApiResponse<Boolean>> {
+  async updatePassword(userId: number, data: string): Promise<ApiResponse<Boolean>> {
     const response = new ApiResponse<Boolean>();
     await this.userRepository.update(userId, {
       Password: data,

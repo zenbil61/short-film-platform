@@ -1,5 +1,5 @@
 
 export class ContentTypeDto {
-    contentTypeId: Number;
-    contentType: String;
+    contentTypeId: number;
+    contentType: string;
 }

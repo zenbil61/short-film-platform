@@ -16,8 +16,8 @@ export function IsFullName(validationOptions?: ValidationOptions) {
           }
 
           // Sabit minLength ve maxLength değerleri
-          const minLength = 3;
-          const maxLength = 100;
+          const minLength = 5;
+          const maxLength = 150;
 
           // MinLength kontrolü
           if (value.length < minLength) {

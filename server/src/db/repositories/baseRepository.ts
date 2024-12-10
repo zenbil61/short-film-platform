@@ -12,7 +12,7 @@ export class BaseRepository<T> {
         this.primaryIdKey = primaryIdKey;
         this.db = db;
     }
-    async findById(id: Number): Promise<T | undefined> {
+    async findById(id: number): Promise<T | undefined> {
         return this.db(this.tableName).where(this.primaryIdKey, id).first();
     }
 
@@ -25,12 +25,12 @@ export class BaseRepository<T> {
         return createdRecord;
     }
 
-    async update(id: Number, data: Partial<T>): Promise<T> {
+    async update(id: number, data: Partial<T>): Promise<T> {
         const [updatedRecord] = await this.db(this.tableName).where(this.primaryIdKey, id).update(data).returning('*');
         return updatedRecord;
     }
 
-    async delete(id: Number): Promise<void> {
+    async delete(id: number): Promise<void> {
         await this.db(this.tableName).where(this.primaryIdKey, id).del();
     }
 }

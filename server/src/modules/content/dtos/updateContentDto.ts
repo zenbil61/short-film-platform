@@ -20,7 +20,7 @@ export class UpdateContentDto {
     @MinLength(10)
     @MaxLength(200)
     @IsNotEmpty()
-    description: String;
+    description: string;
 
     @IsNumber()
     @IsNotEmpty()
@@ -46,5 +46,5 @@ export class UpdateContentDto {
     @IsNotEmpty()
     @ArrayMinSize(1) // Array'in içinde en az 1 eleman olmasını şart koşar.
     @IsNumber({}, { each: true }) // Array içindeki her elemanın Number türünde olması gerektiğini belirtir.
-    categories: Array<Number>;
+    categories: Array<number>;
 }

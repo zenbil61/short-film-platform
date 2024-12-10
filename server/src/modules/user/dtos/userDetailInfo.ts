@@ -1,8 +1,8 @@
 export class userDetailInfo {
-    fullName: String;
-    userName: String;
-    email: String;
-    phoneNumber: Number;
-    profilePicture: String;
-    description: String;
+    fullName: string;
+    userName: string;
+    email: string;
+    phoneNumber: number;
+    profilePicture: string;
+    description: string;
 }

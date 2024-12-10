@@ -4,15 +4,15 @@ export class updateUserInfoDto {
 
     @IsString()
     @MaxLength(50)
-    userName: String;
+    userName: string;
 
     @IsString()
     @MaxLength(100)
-    fullName: String;
+    fullName: string;
 
     @IsString()
     @MaxLength(300)
-    description: String;
+    description: string;
 
-    profilePicture: String;
+    profilePicture: string;
 }

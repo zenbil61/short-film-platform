@@ -14,40 +14,40 @@ export class UserController {
 
   @Get('')
   async getUser(@Request() req): Promise<ApiResponse<userDetailInfo>> {
-    const userId: Number = req.user.userId;
+    const userId: number = req.user.userId;
     return await this.service.getUserInfo(userId);
   }
   @SetMetadata('isPublic', true)
   @Post('')
-  async createUser(@Body() data: createUserDto): Promise<ApiResponse<Number>> {
+  async createUser(@Body() data: createUserDto): Promise<ApiResponse<number>> {
     return await this.service.createUser(data);
   }
 
   @Put('information')
   async updateInformation(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req.user.userId;
+    const userId: number = req.user.userId;
     const request: updateUserInfoDto = req.body;
     return await this.service.updateInformation(userId, request);
   }
 
   @Put('email')
   async updateEmail(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req.user.userId;
-    const request: String = req.body['email'];
+    const userId: number = req.user.userId;
+    const request: string = req.body['email'];
     return await this.service.updateEmail(userId, request);
   }
 
   @Put('phoneNumber')
   async updatePhoneNumber(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req.user.userId;
-    const request: Number = req.body['phoneNumber'];
+    const userId: number = req.user.userId;
+    const request: number = req.body['phoneNumber'];
     return await this.service.updatePhoneNumber(userId, request);
   }
 
   @Put('password')
   async updatePassword(@Request() req): Promise<ApiResponse<Boolean>> {
-    const userId: Number = req.user.userId;
-    const request: String = req.body['password'];
+    const userId: number = req.user.userId;
+    const request: string = req.body['password'];
     return await this.service.updatePassword(userId, request);
   }
 }

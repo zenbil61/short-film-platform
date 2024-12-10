@@ -4,19 +4,19 @@ import { IsFullName, IsPassword } from "src/validators";
 export class createUserDto {
     @IsEmail()
     @MaxLength(100)
-    email: String;
+    email: string;
 
     @IsString()
     @MaxLength(50)
-    userName: String;
+    userName: string;
 
     @IsString()
     @MaxLength(100)
-    fullName: String;
+    fullName: string;
 
     @MinLength(6)
-    password: String;
+    password: string;
 
     @MaxLength(20)
-    phoneNumber: Number;
+    phoneNumber: number;
 }

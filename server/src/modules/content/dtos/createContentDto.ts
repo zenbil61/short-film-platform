@@ -1,5 +1,6 @@
 
-import { IsEmail, IsPhoneNumber, IsString, MaxLength, MinLength, IsBoolean, IsNumber, Max, IsNotEmpty, IsArray, ArrayMinSize } from "class-validator";
+import { IsString, MaxLength, MinLength, IsBoolean, IsNumber, Max, IsNotEmpty, IsArray, ArrayMinSize } from "class-validator";
+import { IsEven } from "src/validators/isEven.validator";
 
 export class CreateContentDto {
 
@@ -16,7 +17,7 @@ export class CreateContentDto {
     @MinLength(10)
     @MaxLength(200)
     @IsNotEmpty()
-    description: String;
+    description: string;
 
     @IsNumber()
     @IsNotEmpty()
@@ -42,5 +43,5 @@ export class CreateContentDto {
     @IsNotEmpty()
     @ArrayMinSize(1) // Array'in içinde en az 1 eleman olmasını şart koşar.
     @IsNumber({}, { each: true }) // Array içindeki her elemanın Number türünde olması gerektiğini belirtir.
-    categories: Array<Number>;
+    categories: Array<number>;
 }

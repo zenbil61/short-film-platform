@@ -1,4 +1,4 @@
 export class LoginResponseDto {
-    accessToken: String;
+    accessToken: string;
     expireDate: Date;
 }

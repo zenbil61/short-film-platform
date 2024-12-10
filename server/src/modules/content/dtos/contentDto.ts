@@ -1,12 +1,12 @@
 
 export class ContentDto {
-    contentId: Number;
-    contentType: Number;
-    name: String;
-    description: String;
-    releaseYear: Number;
-    targetAge: Number;
-    smallImage: String;// küçük resim
-    coverImage: String // kapak resmi
-    isPrivate: Boolean;
+    contentId: number;
+    contentType: number;
+    name: string;
+    description: string;
+    releaseYear: number;
+    targetAge: number;
+    smallImage: string;// küçük resim
+    coverImage: string // kapak resmi
+    isPrivate: boolean;
 }
